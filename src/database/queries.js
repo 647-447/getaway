@@ -8,7 +8,16 @@ const knex = require('knex')({
     }
   })
 
-const setVictim = function(phone_number, danger_zone, injured, stuck, priority, cb) {
+const selectAccount = function(phone_number, cb) {
+  knex
+  .select('*')
+  .from('accounts')
+  .where('phone_number', '=', phone_number)
+  .then( (result) => cb(result) )
+  .catch( (error) => cb(error) )
+}
+
+const insertVictim = function(phone_number, danger_zone, injured, stuck, priority, cb) {
   knex
   .insert(
     {
@@ -24,7 +33,7 @@ const setVictim = function(phone_number, danger_zone, injured, stuck, priority, 
   .catch( (error) => cb(error) )
 }
 
-const getVictims = function(cb) {
+const selectVictims = function(cb) {
   knex
   .select('*')
   .from('victims')
@@ -32,7 +41,7 @@ const getVictims = function(cb) {
   .catch( (error) => cb(error) )
 }
 
-const setUpdate = function(phone_number, note, cb) {
+const insertUpdate = function(phone_number, note, cb) {
   knex
   .insert(
     {
@@ -45,19 +54,10 @@ const setUpdate = function(phone_number, note, cb) {
   .catch( (error) => cb(error) )
 }
 
-const getUpdate = function(phone_number, cb) {
+const selectUpdates = function(phone_number, cb) {
   knex
   .select('*')
   .from('updates')
-  .where('phone_number', '=', phone_number)
-  .then( (result) => cb(result) )
-  .catch( (error) => cb(error) )
-}
-
-const selectAccount = function(phone_number, cb) {
-  knex
-  .select('*')
-  .from('accounts')
   .where('phone_number', '=', phone_number)
   .then( (result) => cb(result) )
   .catch( (error) => cb(error) )
@@ -77,7 +77,7 @@ const updateLocation = function(phone_number, lat, lng, cb) {
   .catch( (error) => cb(error) )
 }
 
-const getLocationHistory = function(phone_number, cb) {
+const selectLocationHistory = function(phone_number, cb) {
   knex
   .select('*')
   .from('location_history')
@@ -86,7 +86,7 @@ const getLocationHistory = function(phone_number, cb) {
   .catch( (error) => cb(error) )
 }
 
-const setDebris = function(phone_number, size, lat, lng, note, cb) {
+const insertDebris = function(phone_number, size, lat, lng, note, cb) {
   knex
   .insert(
     {
@@ -102,7 +102,7 @@ const setDebris = function(phone_number, size, lat, lng, note, cb) {
   .catch( (error) => cb(error) )
 }
 
-const getDebris = function(cb) {
+const selectDebris = function(cb) {
   knex
   .select('*')
   .from('debris')
@@ -110,14 +110,17 @@ const getDebris = function(cb) {
   .catch( (error) => cb(error) )
 }
 
+insertUpdate(1234567890, 'My hair is on fire!', console.log)
+
 module.exports = {
   knex: knex,
-  setVictim: setVictim,
-  getVictims: getVictims,
-  setUpdate: setUpdate,
-  getUpdate: getUpdate,
+  selectAccount: selectAccount,
+  insertVictim: insertVictim,
+  selectVictims: selectVictims,
+  insertUpdate: insertUpdate,
+  selectUpdates: selectUpdates,
   updateLocation: updateLocation,
-  getLocationHistory: getLocationHistory,
-  setDebris: setDebris,
-  getDebris: getDebris
+  selectLocationHistory: selectLocationHistory,
+  insertDebris: insertDebris,
+  selectDebris: selectDebris
 };
