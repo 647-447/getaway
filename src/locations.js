@@ -1,3 +1,6 @@
+// for front-end development only
+// real locations will be sourced from the database
+
 const locations = [
   {lat: -31.563910, lng: 147.154312},
   {lat: -33.718234, lng: 150.363181},
