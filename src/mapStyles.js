@@ -1,4 +1,4 @@
-const styles = [
+const summer = [
   {
     "elementType": "geometry",
     "stylers": [
@@ -247,6 +247,6 @@ const styles = [
       }
     ]
   }
-];
+]
 
-export default styles
+export default summer
