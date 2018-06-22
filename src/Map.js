@@ -1,15 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { withGoogleMap, GoogleMap } from "react-google-maps"
 
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import defaultOptions from './mapOptions.js'
+import locations from './locations.js'
+import Cluster from './Cluster.js'
 
 const Map = withGoogleMap((props) =>
   <GoogleMap
-    defaultZoom={8}
-    defaultCenter={{ lat: -34.397, lng: 150.644 }}
+    defaultOptions={defaultOptions}
   >
-    {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
+  <Cluster
+  	locations={locations}
+  />
   </GoogleMap>
 )
-
 
 export default Map
