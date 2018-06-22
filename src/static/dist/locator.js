@@ -5,7 +5,7 @@ const getLocation = function() {
     const latitude  = position.coords.latitude;
     const longitude = position.coords.longitude;
     
-    sessionStorage.setItem('NG_myLocation', JSON.stringify([latitude,longitude]));
+    sessionStorage.setItem('myLocation', JSON.stringify([latitude,longitude]));
     console.log(`lat: ${latitude} | lon: ${longitude}`);
   }
 
@@ -29,7 +29,7 @@ const getLocation = function() {
   
   console.log("starting navigator.geolocation.getCurrentPosition()")
   navigator.geolocation.getCurrentPosition(success, error, options).then(
-    console.log("navigator returned: " + sessionStorage.getItem('NG_myLocation'))
+    console.log("navigator returned: " + sessionStorage.getItem('myLocation'))
     // make axios call to server HERE
     // then redirect to the maps page
   );

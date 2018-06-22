@@ -3,7 +3,7 @@ const getLocation = require('./locator.js').getLocation;
 let state = {};
 
 //from locator.js
-state.location = sessionStorage.getItem('NG_myLocation') || getLocation();
+state.location = sessionStorage.getItem('myLocation') || getLocation();
 
 const httpPostVictim = function(theUrl, body) {
   var xhr = new XMLHttpRequest();
@@ -58,7 +58,7 @@ const next = function(boolean) {
     httpPostVictim("http://localhost:3000/victims", state);
 
     // super hacky at the moment - try to use promises instead
-    state.location = sessionStorage.getItem('NG_myLocation');
+    state.location = sessionStorage.getItem('myLocation');
 
     if(!state.location) {
       console.log("we couldn't determine your location");

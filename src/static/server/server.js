@@ -1,15 +1,15 @@
-var queries = require('./database/localqueries.js');
+var queries = require('../../database/queries.js');
 var bodyParser = require('body-parser')
 var express = require('express');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 
 var app = express();
 
 app.use(bodyParser.json());
 
-app.use('/', express.static('./home'));
-app.use('/map', express.static('./map'));
+app.use('/', express.static('../dist/home'));
+app.use('/map', express.static('../dist/map'));
 
 app.post('/victims', function (req, res) {
 
