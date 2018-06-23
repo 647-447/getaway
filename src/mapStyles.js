@@ -1,4 +1,4 @@
-const summer = [
+const retro = [
   {
     "elementType": "geometry",
     "stylers": [
@@ -20,6 +20,15 @@ const summer = [
     "stylers": [
       {
         "color": "#f5f1e6"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "visibility": "off"
       }
     ]
   },
@@ -70,10 +79,27 @@ const summer = [
   },
   {
     "featureType": "poi",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
     "elementType": "geometry",
     "stylers": [
       {
         "color": "#dfd2ae"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text",
+    "stylers": [
+      {
+        "visibility": "off"
       }
     ]
   },
@@ -87,28 +113,11 @@ const summer = [
     ]
   },
   {
-    "featureType": "poi.business",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
     "featureType": "poi.park",
     "elementType": "geometry.fill",
     "stylers": [
       {
         "color": "#a5b076"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "labels.text",
-    "stylers": [
-      {
-        "visibility": "off"
       }
     ]
   },
@@ -127,6 +136,15 @@ const summer = [
     "stylers": [
       {
         "color": "#f5f1e6"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
       }
     ]
   },
@@ -194,6 +212,14 @@ const summer = [
     ]
   },
   {
+    "featureType": "transit",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
     "featureType": "transit.line",
     "elementType": "geometry",
     "stylers": [
@@ -249,4 +275,4 @@ const summer = [
   }
 ]
 
-export default summer
+export default retro
