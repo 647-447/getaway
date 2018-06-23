@@ -2,9 +2,12 @@ import React from 'react'
 import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
+import Divider from '@material-ui/core/Divider'
 
 //icons
-import ReorderIcon from '@material-ui/icons/Reorder';
+import ReorderIcon from '@material-ui/icons/Reorder'
+
+import DialogFullScreen from './DialogFullScreen.js'
 
 class TopMenu extends React.Component {
   state = {
@@ -38,7 +41,8 @@ class TopMenu extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={this.handleClose}>Info</MenuItem>
+          <MenuItem><DialogFullScreen/></MenuItem>
+          <Divider/>
           <MenuItem onClick={this.handleClose}>Status</MenuItem>
         </Menu>
       </div>

@@ -3,7 +3,9 @@ import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 
-import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode';
+import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode'
+
+
 class NewsMenu extends React.Component {
   state = {
     anchorEl: null,

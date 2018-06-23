@@ -2,6 +2,7 @@ import React from 'react'
 import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
+import Divider from '@material-ui/core/Divider'
 
 import WarningIcon from '@material-ui/icons/Warning';
 
@@ -37,9 +38,11 @@ class ReportMenu extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem onClick={this.handleClose}>Report</MenuItem>
+          <MenuItem onClick={this.handleClose}>Fire</MenuItem>
+          <Divider/>
+          <MenuItem onClick={this.handleClose}>Blocked Road</MenuItem>
+          <Divider/>
           <MenuItem onClick={this.handleClose}>Victim</MenuItem>
-          <MenuItem onClick={this.handleClose}>Obstruction</MenuItem>
         </Menu>
       </div>
     )
