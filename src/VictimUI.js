@@ -2,7 +2,7 @@ import React from 'react'
 
 // materialUI elements
 import TopMenu from './TopMenu.js'
-import NewsMenu from './NewsMenu.js'
+import NewsFeed from './NewsFeed.js'
 import ReportMenu from './ReportMenu.js'
 
 const VictimUI = (props) => {
@@ -14,7 +14,7 @@ const VictimUI = (props) => {
 		  </div>
 		  <div>
 		    <ReportMenu/>
-		    <NewsMenu/>
+		    <NewsFeed/>
 		  </div>
 		</div>
 	)
