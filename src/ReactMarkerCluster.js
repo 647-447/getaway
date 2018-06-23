@@ -8,9 +8,8 @@ const ReactMarkerCluster = (props) => {
 
 	const markers = props.locations
 		.map( (marker, index) => (
-			<div>
+			<div key={index}>
 		    <ReactMarker
-		      index={index}
 		      position={{ lat: marker.lat, lng: marker.lng }}
 		    >
 	      </ReactMarker>

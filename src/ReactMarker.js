@@ -1,26 +1,45 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Marker } from "react-google-maps"
 
 import { InfoWindow } from 'react-google-maps'
 
+class ReactMarker extends Component {
 
-const ReactMarker = (props) => {
+	constructor(props) {
+		super(props)
+		this.state = {
+			isOpen : false
+		}
+	}
 
-	return (
-		<Marker
-			key={props.index}
-		  position={props.position}
-		>
+	toggleInfo = () => {
+		this.setState( { isOpen : !this.state.isOpen } )
+	}
 
-			<InfoWindow position={props.position}>
-				<div>
-					<h3>Victim Name</h3>
-					<p>Help! Please get me out of here I don't know where to go, help me!</p>
-					<h5>{'20:03:43 | June 23, 2018'}</h5>
-				</div>
-			</InfoWindow>
-		</Marker>
-	)
+	render() {
+		return (
+			<Marker
+				key={this.props.index}
+			  position={this.props.position}
+			  onClick={this.toggleInfo}
+			>
+				{this.state.isOpen && <InfoWindow position={this.props.position} onCloseClick={this.toggleInfo}>
+					<div className='infoWindow'>
+						<div className='topHeader'>
+							<div>Nuno Neves</div>
+							<a href="tel:555-555-5555">555-555-5555</a>
+						</div>
+						<div className='victimStatus'>
+						"Help! Please get me out of here I don't know where to go, help me!"
+						</div>
+						<div className='victimTimeStamp'>{'20:03:43 | June 23, 2018'}</div>
+					</div>
+				</InfoWindow>}
+
+				
+			</Marker>
+		)
+	}
 }
 
 export default ReactMarker
