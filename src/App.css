@@ -1,5 +1,7 @@
 .App {
+  position: relative;
   text-align: center;
+  z-index: 1;
 }
 
 .App-logo {
@@ -25,4 +27,60 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.UI {
+  pointer-events: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
+}
+
+.UI > div {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: row;
+  margin: 15px;
+  align-self: flex-end;
+}
+
+
+.UI > div > div {
+  margin: 5px;
+}
+
+.infoWindow {
+  font-family: "roboto";
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.infoWindow > p {
+  margin: 0px;
+  word-wrap: break-word;
+}
+
+.topHeader {
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.victimStatus {
+  margin: 10px 0 10px 0;
+}
+
+.victimTimeStamp {
+  font-weight: bold;
+  align-self: flex-end;
 }
