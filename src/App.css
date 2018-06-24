@@ -82,6 +82,13 @@
 .victimTimeStamp {
   font-weight: bold;
   align-self: flex-end;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.phone_number {
+  padding-left: 30px;
 }
 
 .form {
