@@ -8,7 +8,7 @@ const ReactMap = withGoogleMap((props) =>
     defaultOptions={props.defaultOptions}
   >
   <ReactMarkerCluster
-  	locations={props.locations}
+  	victims={props.victims}
   />
   </GoogleMap>
 )

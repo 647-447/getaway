@@ -5,14 +5,12 @@ import ReactMarker from './ReactMarker.js'
 
 const ReactMarkerCluster = (props) => {
 
-	const markers = props.locations
-		.map( (marker, index) => (
+	const markers = props.victims
+		.map( (victim, index) => (
 			<div key={index}>
 		    <ReactMarker
-		      position={{ lat: marker.lat, lng: marker.lng }}
-		    >
-	      </ReactMarker>
-
+		      victim={victim}
+		    />
       </div>
   	))
 
