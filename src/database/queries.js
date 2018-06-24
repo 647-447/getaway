@@ -8,6 +8,19 @@ const knex = require('knex')({
     }
   })
 
+const insertAccount = function(phone_number, name, dob, cb) {
+  knex
+  .insert(
+    {
+      phone_number : phone_number,
+      name : name,
+      dob : dob
+    }
+  )
+  .into('accounts')
+  .then( (result) => cb(result) )
+  .catch( (error) => cb(error) )
+}
 
 const selectAccount = function(phone_number, cb) {
   knex
@@ -19,13 +32,13 @@ const selectAccount = function(phone_number, cb) {
   .catch( (error) => cb(error) )
 }
 
-const insertVictim = function(phone_number, danger_zone, injured, stuck, priority, cb) {
+const insertVictim = function(phone_number, injured, injury, stuck, priority, cb) {
   knex
   .insert(
     {
       phone_number : phone_number,
-      danger_zone : danger_zone,
       injured : injured,
+      injury: injury,
       stuck : stuck,
       priority : priority
     }
@@ -140,6 +153,7 @@ const selectNews = function(cb) {
 
 module.exports = {
   knex: knex,
+  insertAccount: insertAccount,
   selectAccount: selectAccount,
   insertVictim: insertVictim,
   selectVictims: selectVictims,
@@ -150,4 +164,4 @@ module.exports = {
   insertDebris: insertDebris,
   selectDebris: selectDebris,
   selectNews: selectNews
-};
+}
