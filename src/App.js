@@ -3,7 +3,8 @@ import './App.css'
 
 // fake data
 import defaultOptions from './mapOptions.js'
-import locations from './locations.js'
+
+import { victims } from './victims.js'
 
 // custom component
 import ReactMap from './ReactMap.js'
@@ -24,7 +25,7 @@ class App extends Component {
           containerElement={<div style={{ height: `100vh` }} />}
           mapElement={<div style={{ height: `100%` }} />}
           defaultOptions={defaultOptions}
-          locations={locations}
+          victims={victims}
         />
       </div>
     )
