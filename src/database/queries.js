@@ -8,11 +8,13 @@ const knex = require('knex')({
     }
   })
 
+
 const selectAccount = function(phone_number, cb) {
   knex
   .select('*')
   .from('accounts')
   .where('phone_number', '=', phone_number)
+  .orderBy('phone_number')
   .then( (result) => cb(result) )
   .catch( (error) => cb(error) )
 }
@@ -37,6 +39,7 @@ const selectVictims = function(cb) {
   knex
   .select('*')
   .from('victims')
+  .orderBy('phone_number')
   .then( (result) => cb(result) )
   .catch( (error) => cb(error) )
 }
@@ -59,6 +62,7 @@ const selectUpdates = function(phone_number, cb) {
   .select('*')
   .from('updates')
   .where('phone_number', '=', phone_number)
+  .orderBy('posted')
   .then( (result) => cb(result) )
   .catch( (error) => cb(error) )
 }
@@ -82,6 +86,7 @@ const selectLocationHistory = function(phone_number, cb) {
   .select('*')
   .from('location_history')
   .where('phone_number', '=', phone_number)
+  .orderBy('posted')
   .then( (result) => cb(result) )
   .catch( (error) => cb(error) )
 }
@@ -106,6 +111,20 @@ const selectDebris = function(cb) {
   knex
   .select('*')
   .from('debris')
+  .orderBy('posted')
+  .then( (result) => cb(result) )
+  .catch( (error) => cb(error) )
+}
+
+const insertNews = function(header, body, cb) {
+  knex
+  .insert(
+    {
+      header : header,
+      body : body
+    }
+  )
+  .into('news')
   .then( (result) => cb(result) )
   .catch( (error) => cb(error) )
 }
