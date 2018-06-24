@@ -17,6 +17,7 @@ class ReactMarker extends Component {
 	}
 
 	render() {
+
 		return (
 			<Marker
 				key={this.props.index}

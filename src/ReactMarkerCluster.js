@@ -3,7 +3,6 @@ import { MarkerClusterer } from 'react-google-maps/lib/components/addons/MarkerC
 
 import ReactMarker from './ReactMarker.js'
 
-
 const ReactMarkerCluster = (props) => {
 
 	const markers = props.locations
