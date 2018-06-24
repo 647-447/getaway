@@ -40,6 +40,12 @@ CREATE TABLE debris (
 	entry_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE news (
+	id SERIAL PRIMARY KEY,
+	header VARCHAR(50) NOT NULL,
+	body VARCHAR(500) NOT NULL,
+	posted TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 INSERT INTO accounts (phone_number, name, dob) VALUES (4153358620, 'Nuno Neves', 28101989);
 INSERT INTO accounts (phone_number, name, dob) VALUES (1112223333, 'Andre Nguyen', 15041993);
@@ -63,6 +69,10 @@ INSERT INTO updates (phone_number, note) VALUES (5554443333, 'I lost my boy Nuno
 
 INSERT INTO debris (phone_number, size, lat, lng, note) VALUES (4153358620, 2, '37.5497', '-122.081', 'the road collapsed here roughly 12 feet deep, I am stuck in here!');
 INSERT INTO debris (phone_number, size, lat, lng, note) VALUES (1112223333, 2, '37.5497', '-122.081', 'I see a hole across the road. do not drive through it.');
+
+INSERT INTO news (header, body) VALUES ('Active Fires', 'There is a an active fire in Market Street, between 6th and 4th Street');
+
+INSERT INTO news (header, body) VALUES ('Broken Roads', 'Stay away from the Tenderloin');
 
 /* 
 if postgreSQL is installed and psql is not working, open another window in the terminal and run the bash command:

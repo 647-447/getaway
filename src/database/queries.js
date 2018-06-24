@@ -110,7 +110,14 @@ const selectDebris = function(cb) {
   .catch( (error) => cb(error) )
 }
 
-insertUpdate(1234567890, 'My hair is on fire!', console.log)
+const selectNews = function(cb) {
+  knex
+  .select('*')
+  .from('news')
+  .orderBy('posted')
+  .then( (result) => cb(result) )
+  .catch( (error) => cb(error) )
+}
 
 module.exports = {
   knex: knex,
@@ -122,5 +129,6 @@ module.exports = {
   updateLocation: updateLocation,
   selectLocationHistory: selectLocationHistory,
   insertDebris: insertDebris,
-  selectDebris: selectDebris
+  selectDebris: selectDebris,
+  selectNews: selectNews
 };
