@@ -96,3 +96,12 @@
   flex-direction: column;
   margin: 0px 20px 0px 20px;
 }
+
+.landing {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
