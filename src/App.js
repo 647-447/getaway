@@ -1,32 +1,45 @@
 import React, { Component } from 'react'
 import './App.css'
 
-// fake data
-import defaultOptions from './mapOptions.js'
+import VolunteerLanding from './VolunteerLanding.js'
+import VictimLanding from './VictimLanding.js'
 
-import { victims } from './victims.js'
-
-// custom component
-import ReactMap from './ReactMap.js'
-
-// materialUI elements
 import VictimUI from './VictimUI.js'
+import VolunteerUI from './VolunteerUI.js'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      page: 'volunteerLanding'
+    }
+  }
+
+  renderPage = (page) => {
+    switch(page) {
+
+      case 'volunteerLanding':
+        return <VolunteerLanding/>
+
+      case 'victimLanding':
+        return <VictimLanding/>
+
+      case 'map':
+        return <VolunteerUI/>
+
+      default:
+        return <VictimLanding/>
+    }
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.setState( { page: 'map' } ), 3000)
+  }
+
   render() {
     return (
-
-      <div className="App">
-        <VictimUI/>
-        <ReactMap
-          isMarkerShown={false}
-          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `100vh` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-          defaultOptions={defaultOptions}
-          victims={victims}
-        />
+      <div className="App" scroll="no">
+        {this.renderPage(this.state.page)}
       </div>
     )
   }
