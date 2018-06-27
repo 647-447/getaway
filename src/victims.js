@@ -57,6 +57,4 @@ const generateVictims = (latStart, latEnd, lngStart, lngEnd, amount) => {
 
 const victims = generateVictims(33.859139, 33.787692, -117.844121, -118.020417, 999 )
 
-console.log(victims)
-
 module.exports = { victims }
