@@ -44,7 +44,7 @@ class VictimFullScreen extends React.Component {
     const { classes } = this.props
     return (
       <div>
-        <Button onClick={this.handleClickOpen}>Add details</Button>
+        <Button onClick={this.handleClickOpen}>My details</Button>
         <Dialog
           fullScreen
           open={this.state.open}

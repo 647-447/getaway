@@ -25,8 +25,6 @@ class TopMenu extends React.Component {
   render() {
     const { anchorEl } = this.state
 
-    console.log(this.props.user)
-
     return (
       <div>
         <Button
