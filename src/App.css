@@ -97,9 +97,20 @@
   margin: 0px 20px 0px 20px;
 }
 
-.landing {
+.fullScreenForm {
+  display: flex;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.formBlock {
+  margin: 50px;
+}
+
+.landing {
   display: flex;
   flex-direction: column;
   justify-content: center;
