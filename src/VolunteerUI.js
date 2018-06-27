@@ -8,10 +8,10 @@ import { victims } from './victims.js'
 
 import UserMarker from './UserMarker.js'
 
-const VolunteerUI = () => {
+const VolunteerUI = (props) => {
 	return ( 
 		<div>
-			<VolunteerOverlay/>
+			<VolunteerOverlay user={props.user}/>
 			<ReactMap
 				isMarkerShown={false}
 	      googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"

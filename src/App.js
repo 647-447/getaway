@@ -13,16 +13,17 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      page: 'start'
+      page: 'start',
+      user: null
     }
   }
 
   nextPage = (userType) => {
     if (userType === 'victimLanding') {
-      this.setState( { page: 'victimLanding' } )
+      this.setState( { page: 'victimLanding', user: 'victim' } )
 
     } else if ( userType === 'volunteerLanding' ) {
-      this.setState( { page: 'volunteerLanding' } )
+      this.setState( { page: 'volunteerLanding', user:'volunteer' } )
     }
     
   }
@@ -33,16 +34,16 @@ class App extends Component {
         return <Start nextPage={this.nextPage}/>
 
       case 'volunteerLanding':
-        return <VolunteerLanding/>
+        return <VolunteerLanding user={this.state.user}/>
 
       case 'victimLanding':
-        return <VictimLanding/>
+        return <VictimLanding user={this.state.user}/>
 
       case 'victimUI':
-        return <VictimUI/>
+        return <VictimUI user={this.state.user}/>
 
       case 'volunteerUI':
-        return <VolunteerUI/>
+        return <VolunteerUI user={this.state.user}/>
 
       default:
         return <Start nextPage={this.nextPage}/>

@@ -5,10 +5,10 @@ import VictimOverlay from './VictimOverlay.js'
 
 import defaultOptions from './mapOptions.js'
 
-const VictimUI = () => {
+const VictimUI = (props) => {
 	return (
 		<div>
-			<VictimOverlay/>
+			<VictimOverlay user={props.user}/>
       <ReactMap
         isMarkerShown={false}
         googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"

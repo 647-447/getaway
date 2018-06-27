@@ -10,7 +10,7 @@ const VolunteerOverlay = (props) => {
 	return (
 		<div className="UI">
 		  <div>
-		    <TopMenu/>
+		    <TopMenu user={props.user}/>
 		  </div>
 		  <div>
 		    <ReportMenu/>

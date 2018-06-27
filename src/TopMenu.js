@@ -4,10 +4,10 @@ import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import Divider from '@material-ui/core/Divider'
 
-//icons
 import ReorderIcon from '@material-ui/icons/Reorder'
 
 import VolunteerFullScreen from './VolunteerFullScreen.js'
+import VictimFullScreen from './VictimFullScreen.js'
 
 class TopMenu extends React.Component {
   state = {
@@ -25,6 +25,8 @@ class TopMenu extends React.Component {
   render() {
     const { anchorEl } = this.state
 
+    console.log(this.props.user)
+
     return (
       <div>
         <Button
@@ -41,9 +43,10 @@ class TopMenu extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem><VolunteerFullScreen/></MenuItem>
-          <Divider/>
-          <MenuItem onClick={this.handleClose}>Status</MenuItem>
+          <MenuItem>
+          { this.props.user === "volunteer" && <VolunteerFullScreen/> }
+          { this.props.user === "victim" && <VictimFullScreen/> }
+          </MenuItem>
         </Menu>
       </div>
     )

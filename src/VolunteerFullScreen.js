@@ -88,11 +88,14 @@ class VolunteerFullScreen extends React.Component {
             <Divider />
             <ListItem button>
               <ListItemText primary="Vehicle model" secondary="Tesla Model S, black" />
-              <Divider />
+            </ListItem>
+            <Divider />
+            <ListItem button>
               <ListItemText primary="Licence plate" secondary="SUPH3R0" />
-              <Divider />
+            </ListItem>
+            <Divider />
+            <ListItem button>
               <ListItemText primary="Seats available" secondary="4" />
-              
             </ListItem>
             <Divider />
           </List>
