@@ -7,16 +7,24 @@ import VictimLanding from './VictimLanding.js'
 import VictimUI from './VictimUI.js'
 import VolunteerUI from './VolunteerUI.js'
 
+import Start from './Start.js'
+
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      page: 'volunteerLanding'
+      page: 'start'
     }
+  }
+
+  nextPage = (props) => {
+    this.setState( { page: 'victimLanding' } )
   }
 
   renderPage = (page) => {
     switch(page) {
+      case 'start':
+        return <Start nextPage={this.nextPage}/>
 
       case 'volunteerLanding':
         return <VolunteerLanding/>
@@ -32,8 +40,11 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    setTimeout(() => this.setState( { page: 'map' } ), 3000)
+  componentDidUpdate() {
+
+    if (this.state.page === 'victimLanding') {
+      setTimeout(() => this.setState( { page: 'map' } ), 3000)
+    }
   }
 
   render() {
