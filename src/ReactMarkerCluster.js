@@ -2,6 +2,7 @@ import React from 'react'
 import { MarkerClusterer } from 'react-google-maps/lib/components/addons/MarkerClusterer'
 
 import ReactMarker from './ReactMarker.js'
+import UserMarker from "./UserMarker.js"
 
 const ReactMarkerCluster = (props) => {
 
@@ -21,6 +22,7 @@ const ReactMarkerCluster = (props) => {
       gridSize={60}
     >
     	{markers}
+      <UserMarker/>
     </MarkerClusterer>
   )
 }

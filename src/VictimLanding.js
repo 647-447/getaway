@@ -6,7 +6,7 @@ const VictimLanding = () => {
 	return (
 		<div className='landing'>
 			<h3>Get-A-Way</h3>
-			<p>Don't worry,<br/>You're on our radar now</p>
+			<p>Our server is fetching data to get to safety</p>
 			<ProgressBar/>
 		</div>
 	)

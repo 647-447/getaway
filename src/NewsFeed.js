@@ -7,6 +7,8 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 
 import ChromeReaderModeIcon from '@material-ui/icons/ChromeReaderMode'
 
+import MediaCard from './MediaCard.js'
+
 class NewsFeed extends React.Component {
   state = {
     open: false,
@@ -36,17 +38,10 @@ class NewsFeed extends React.Component {
           aria-describedby="alert-dialog-description"
         >
           <DialogTitle id="alert-dialog-title">{"Active Fires"}</DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              There is a an active fire in Market Street, between 6th and 4th Street.
-            </DialogContentText>
-          </DialogContent>
+          <MediaCard title="Anaheim Hills" text="Restricted entry to 91 Express lane and all the roads around Deer Canyon park" url="http://cdn.abclocal.go.com/content/kabc/images/cms/ana3.jpg"/>
 
           <DialogTitle id="alert-dialog-title">{"Broken Roads"}</DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">Stay away from the Tenderloin.
-            </DialogContentText>
-          </DialogContent>
+          <MediaCard title="Fissures across Serrano Avenue" text="Restricted entry between Sunset Ridge and Highcres Drive" url="https://media.spokesman.com/photos/2017/04/17/Inchelium_Highway_1_t1140.jpg?abf36d44fcda22a1f7041162086f31df6a374511"/>
         </Dialog>
       </div>
     )

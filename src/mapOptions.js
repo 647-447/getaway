@@ -1,8 +1,8 @@
 import retro from './mapStyles.js'
 
 const defaultOptions = {
-	center: { lat: 33.800859, lng:  -117.920895 },
-  zoom: 15,
+	center: { lat: 33.8004639, lng: -117.921 },
+  zoom: 18,
   disableDefaultUI: true,
   styles: retro
 }

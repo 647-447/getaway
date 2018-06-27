@@ -17,8 +17,14 @@ class App extends Component {
     }
   }
 
-  nextPage = (props) => {
-    this.setState( { page: 'victimLanding' } )
+  nextPage = (userType) => {
+    if (userType === 'victimLanding') {
+      this.setState( { page: 'victimLanding' } )
+
+    } else if ( userType === 'volunteerLanding' ) {
+      this.setState( { page: 'volunteerLanding' } )
+    }
+    
   }
 
   renderPage = (page) => {
@@ -32,18 +38,24 @@ class App extends Component {
       case 'victimLanding':
         return <VictimLanding/>
 
-      case 'map':
+      case 'victimUI':
+        return <VictimUI/>
+
+      case 'volunteerUI':
         return <VolunteerUI/>
 
       default:
-        return <VictimLanding/>
+        return <Start nextPage={this.nextPage}/>
     }
   }
 
   componentDidUpdate() {
-
     if (this.state.page === 'victimLanding') {
-      setTimeout(() => this.setState( { page: 'map' } ), 3000)
+      setTimeout(() => this.setState( { page: 'victimUI' } ), 3000)
+    }
+
+    if (this.state.page === 'volunteerLanding') {
+      setTimeout(() => this.setState( { page: 'volunteerUI' } ), 3000)
     }
   }
 

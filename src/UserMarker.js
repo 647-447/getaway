@@ -3,12 +3,20 @@ import { Marker } from "react-google-maps"
 
 import { InfoWindow } from 'react-google-maps'
 
-class ReactMarker extends Component {
+class UserMarker extends Component {
 
 	constructor(props) {
 		super(props)
 		this.state = {
-			isOpen : false
+			phone_number: 4124499354,
+			name: 'Nathan Khosla',
+			lat: 33.8004639,
+			lng: -117.921,
+			injury: '',
+			seats: 3,
+			vehicle: 'Tesla Model S, black',
+			plate: 'SUPH3R0',
+			isOpen : true
 		}
 	}
 
@@ -18,32 +26,30 @@ class ReactMarker extends Component {
 
 	render() {
 
-		const n = "" + this.props.victim.phone_number
+
+    console.log('marker volunteer rendered')
+		const n = "" + this.state.phone_number
 		const pn =  `${n.substring(0,3)}-${n.substring(3,6)}-${n.substring(6,10)}`
 		const href = `tel:${pn}`
-		const condition = this.props.victim.injury.length === 0 ? 'healthy' : this.props.victim.injury
-
-		const hour = Math.floor(Math.random() * 10)
-		const min = Math.floor(Math.random() * 60)
-		const sec = Math.floor(Math.random() * 60)
+		const condition = this.state.injury.length === 0 ? 'healthy' : this.state.injury
 
 		return (
 			<Marker
-			  position={{ lat: this.props.victim.lat, lng: this.props.victim.lng }}
+			  position={{ lat: this.state.lat, lng: this.state.lng }}
 			  onClick={this.toggleInfo}
 			>
 				{this.state.isOpen && <InfoWindow position={this.props.position} onCloseClick={this.toggleInfo}>
 					<div className='infoWindow'>
 						<div className='topHeader'>
-							<div>{this.props.victim.name}</div>
+							<div>{this.state.name}</div>
 							<a className='phone_number' href={href}>{pn}</a>
 						</div>
 						<div className='victimStatus'>
-						condition: {condition}
+						<b>vehicle:</b> {this.state.vehicle}
 						</div>
 						<div className='victimTimeStamp'>
 							<span>last seen:</span>
-							<span>{hour}:{min}:{sec} on June 28, 2018</span>
+							<span>09:30:43 on June 27, 2018</span>
 						</div>
 					</div>
 				</InfoWindow>}
@@ -54,4 +60,4 @@ class ReactMarker extends Component {
 	}
 }
 
-export default ReactMarker
+export default UserMarker

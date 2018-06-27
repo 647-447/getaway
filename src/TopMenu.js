@@ -7,7 +7,7 @@ import Divider from '@material-ui/core/Divider'
 //icons
 import ReorderIcon from '@material-ui/icons/Reorder'
 
-import DialogFullScreen from './DialogFullScreen.js'
+import VolunteerFullScreen from './VolunteerFullScreen.js'
 
 class TopMenu extends React.Component {
   state = {
@@ -41,7 +41,7 @@ class TopMenu extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
-          <MenuItem><DialogFullScreen/></MenuItem>
+          <MenuItem><VolunteerFullScreen/></MenuItem>
           <Divider/>
           <MenuItem onClick={this.handleClose}>Status</MenuItem>
         </Menu>

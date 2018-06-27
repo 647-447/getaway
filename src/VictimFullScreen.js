@@ -27,7 +27,7 @@ function Transition(props) {
   return <Slide direction="up" {...props} />
 }
 
-class FullScreenDialog extends React.Component {
+class VictimFullScreen extends React.Component {
   state = {
     open: false,
   }
@@ -67,11 +67,11 @@ class FullScreenDialog extends React.Component {
           <List>
             <Divider />
             <ListItem button>
-              <ListItemText primary="Contact Number" secondary="555 555 5555" />
+              <ListItemText primary="Contact Number" secondary="412 559 9354" />
             </ListItem>
             <Divider />
             <ListItem button>
-              <ListItemText primary="Full Name" secondary="Nuno Neves" />
+              <ListItemText primary="Full Name" secondary="Nathan Khosla" />
             </ListItem>
             <Divider />
             <ListItem button>
@@ -79,19 +79,19 @@ class FullScreenDialog extends React.Component {
             </ListItem>
             <Divider />
             <ListItem button>
-              <ListItemText primary="Blood type" secondary="AB +" />
+              <ListItemText primary="Blood type" secondary="O-" />
             </ListItem>
             <Divider />
             <ListItem button>
-              <ListItemText primary="Injuries" secondary="sprained ankle" />
+              <ListItemText primary="Injuries" secondary="none" />
             </ListItem>
             <Divider />
             <ListItem button>
-              <ListItemText primary="Victim Priority" secondary="low" />
+              <ListItemText primary="Sprained Ankle" secondary="low" />
             </ListItem>
             <Divider />
             <ListItem button>
-              <ListItemText primary="Rescue ETA" secondary="9h 23min" />
+              <ListItemText primary="Rescue ETA" secondary="2d 11h 23min" />
             </ListItem>
           </List>
         </Dialog>
@@ -100,8 +100,8 @@ class FullScreenDialog extends React.Component {
   }
 }
 
-FullScreenDialog.propTypes = {
+VictimFullScreen.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(FullScreenDialog)
+export default withStyles(styles)(VictimFullScreen)

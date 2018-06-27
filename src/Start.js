@@ -28,7 +28,8 @@ class Start extends Component {
 	    stuck: null,
 	    vehicle: null,
 	    pros: null,
-	    stage: 1
+	    candidate: null,
+	    volunteer: null
 	  }
 	}
 
@@ -47,11 +48,24 @@ class Start extends Component {
   nextPage = this.props.nextPage
 
   componentDidUpdate() {
-  	if (this.state.injured !== null &&
-  			this.state.stuck !== null &&
-  			this.state.vehicle !== null) {
-  		// send info to server
-  		this.nextPage()
+  	console.log(this.state)
+  	if (this.state.volunteer === 'true') { this.nextPage('volunteerLanding') }
+  	if (this.state.candidate === 'false' || this.state.volunteer === 'false') { this.nextPage('victimLanding') }
+
+  	if (this.state.injured !== null && this.state.stuck !== null && this.state.vehicle !== null) {
+  		console.log('check if candidate')
+
+  		if( this.state.injured === 'false' && this.state.stuck === 'false' && this.state.vehicle === 'true') {
+  			console.log('candidate')
+  			if(this.state.candidate) { return }
+
+  			this.setState( { candidate: 'true'} )
+  			
+  		} else {
+  			this.setState( { candidate: 'false'} )
+  		}
+  		
+  		// send state to server
   	}
   }
 
@@ -108,6 +122,23 @@ class Start extends Component {
 				        Yes
 				      </Button>
 				      <Button name='vehicle' value={false} variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>
+				        No
+				      </Button>
+			      </div>
+			    </div>
+			  	}
+
+			  	{ this.state.candidate === 'true'  &&
+					
+
+					<div className='formBlock'>
+						<h2>You could save lives Today.</h2>
+						<h2>There's 43 people awaiting rescue in your area, would you like to volunteer?</h2>
+						<div>
+							<Button name='volunteer' value={true} variant="contained" color="secondary" className={classes.button} onClick={this.handleClick}>
+				        Yes
+				      </Button>
+				      <Button name='volunteer' value={false} variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>
 				        No
 				      </Button>
 			      </div>
