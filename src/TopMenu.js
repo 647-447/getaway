@@ -6,8 +6,7 @@ import Divider from '@material-ui/core/Divider'
 
 import ReorderIcon from '@material-ui/icons/Reorder'
 
-import VolunteerFullScreen from './VolunteerFullScreen.js'
-import VictimFullScreen from './VictimFullScreen.js'
+import Details from './Details.js'
 
 class TopMenu extends React.Component {
   state = {
@@ -42,8 +41,7 @@ class TopMenu extends React.Component {
           onClose={this.handleClose}
         >
           <MenuItem>
-          { this.props.user === "volunteer" && <VolunteerFullScreen/> }
-          { this.props.user === "victim" && <VictimFullScreen/> }
+            <Details details={this.props.details} />
           </MenuItem>
         </Menu>
       </div>

@@ -1,14 +1,29 @@
 import React from 'react'
 
 import ReactMap from './ReactMap.js'
-import VictimOverlay from './VictimOverlay.js'
+
+import TopMenu from './TopMenu.js'
+import NewsFeed from './NewsFeed.js'
+import ReportMenu from './ReportMenu.js'
 
 import defaultOptions from './mapOptions.js'
 
-const VictimUI = (props) => {
+import { victims } from './victims.js'
+import UserMarker from './UserMarker.js'
+
+const MapUI = (props) => {
 	return (
 		<div>
-			<VictimOverlay user={props.user}/>
+			<div className="UI">
+			  <div>
+			    <TopMenu details={props.details}/>
+			  </div>
+			  <div>
+			    <ReportMenu/>
+			    <NewsFeed/>
+			  </div>
+			</div>
+
       <ReactMap
         isMarkerShown={false}
         googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
@@ -16,9 +31,10 @@ const VictimUI = (props) => {
         containerElement={<div style={{ height: `100vh` }} />}
         mapElement={<div style={{ height: `100%` }} />}
         defaultOptions={defaultOptions}
+        victims={victims}
       />
 	</div>
 	)
 }
 
-export default VictimUI
+export default MapUI

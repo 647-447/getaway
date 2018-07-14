@@ -27,15 +27,17 @@ class Start extends Component {
 	    injured: null,
 	    stuck: null,
 	    vehicle: null,
-	    pros: null,
 	    candidate: null,
 	    volunteer: null
 	  }
 	}
 
 	handleClick = event => {
-		if(event.target.name !== undefined && event.target.value !== undefined) {
-			this.setState( { [event.target.name] : event.target.value } )
+
+		// hacky way around the clicking on the text instead of button
+		if(event.target.name) {
+			let boole = event.target.value ? true : false
+			this.setState( { [event.target.name] : boole } )
 		}
   }
 
@@ -44,30 +46,42 @@ class Start extends Component {
   	// track user location
   }
 
-
-  nextPage = this.props.nextPage
-
   componentDidUpdate() {
   	console.log(this.state)
-  	if (this.state.volunteer === 'true') { this.nextPage('volunteerLanding') }
-  	if (this.state.candidate === 'false' || this.state.volunteer === 'false') { this.nextPage('victimLanding') }
+
+  	if (this.state.volunteer !== null) {
+  		this.props.nextPage(this.state)
+  		return
+  	}
 
   	if (this.state.injured !== null && this.state.stuck !== null && this.state.vehicle !== null) {
   		console.log('check if candidate')
 
-  		if( this.state.injured === 'false' && this.state.stuck === 'false' && this.state.vehicle === 'true') {
+  		if( this.state.injured === false && this.state.stuck === false && this.state.vehicle === true) {
   			console.log('candidate')
   			if(this.state.candidate) { return }
 
-  			this.setState( { candidate: 'true'} )
+  			this.setState( { candidate: true } )
   			
   		} else {
-  			this.setState( { candidate: 'false'} )
+  			this.setState( { candidate: false, volunteer: false } )
   		}
   		
   		// send state to server
   	}
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+
+  	for ( var key in this.state) {
+  		if( this.state[key] !== nextState[key] ) { 
+  			console.log('updated')
+  			return true
+  		}
+  	}
+
+  	return false
+	}
 
 	render() {
 		const { classes } = this.props
@@ -85,7 +99,7 @@ class Start extends Component {
 							<Button name='injured' value={true} variant="contained" color="secondary" className={classes.button} onClick={this.handleClick}>
 				        Yes
 				      </Button>
-				      <Button name='injured' value={false} variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>
+				      <Button name='injured' variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>
 				        No
 				      </Button>
 			      </div>
@@ -103,7 +117,7 @@ class Start extends Component {
 							<Button name='stuck' value={true} variant="contained" color="secondary" className={classes.button} onClick={this.handleClick}>
 				        Yes
 				      </Button>
-				      <Button name='stuck' value={false} variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>
+				      <Button name='stuck' variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>
 				        No
 				      </Button>
 			      </div>
@@ -121,14 +135,14 @@ class Start extends Component {
 							<Button name='vehicle' value={true} variant="contained" color="secondary" className={classes.button} onClick={this.handleClick}>
 				        Yes
 				      </Button>
-				      <Button name='vehicle' value={false} variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>
+				      <Button name='vehicle' variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>
 				        No
 				      </Button>
 			      </div>
 			    </div>
 			  	}
 
-			  	{ this.state.candidate === 'true'  &&
+			  	{ this.state.candidate === true  &&
 					
 
 					<div className='formBlock'>
@@ -138,7 +152,7 @@ class Start extends Component {
 							<Button name='volunteer' value={true} variant="contained" color="secondary" className={classes.button} onClick={this.handleClick}>
 				        Yes
 				      </Button>
-				      <Button name='volunteer' value={false} variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>
+				      <Button name='volunteer' variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>
 				        No
 				      </Button>
 			      </div>

@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import './App.css'
 
-import VolunteerLanding from './VolunteerLanding.js'
-import VictimLanding from './VictimLanding.js'
-
-import VictimUI from './VictimUI.js'
-import VolunteerUI from './VolunteerUI.js'
+import Landing from './Landing.js'
+import MapUI from './MapUI.js'
 
 import Start from './Start.js'
 
@@ -13,50 +10,42 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      page: 'start',
-      user: null
+      page: 'Start',
+      loading: false,
+      details: null
     }
   }
 
-  nextPage = (userType) => {
-    if (userType === 'victimLanding') {
-      this.setState( { page: 'victimLanding', user: 'victim' } )
-
-    } else if ( userType === 'volunteerLanding' ) {
-      this.setState( { page: 'volunteerLanding', user:'volunteer' } )
-    }
-    
+  nextPage = (details) => {
+    console.log( 'details on app nextpage: ', details)
+    let newState = { page: 'Landing' , details: details }
+    this.setState( newState )
   }
 
   renderPage = (page) => {
     switch(page) {
-      case 'start':
-        return <Start nextPage={this.nextPage}/>
 
-      case 'volunteerLanding':
-        return <VolunteerLanding user={this.state.user}/>
+      case 'Landing':
+        return <Landing details={this.state.details}/>
 
-      case 'victimLanding':
-        return <VictimLanding user={this.state.user}/>
-
-      case 'victimUI':
-        return <VictimUI user={this.state.user}/>
-
-      case 'volunteerUI':
-        return <VolunteerUI user={this.state.user}/>
+      case 'MapUI':
+        return <MapUI details={this.state.details}/>
 
       default:
         return <Start nextPage={this.nextPage}/>
     }
   }
 
-  componentDidUpdate() {
-    if (this.state.page === 'victimLanding') {
-      setTimeout(() => this.setState( { page: 'victimUI' } ), 3000)
-    }
+  shouldComponentUpdate(nextProps, nextState) {
+    return !this.state.loading
+  }
 
-    if (this.state.page === 'volunteerLanding') {
-      setTimeout(() => this.setState( { page: 'volunteerUI' } ), 3000)
+  componentDidUpdate() {
+    if (this.state.page === 'Landing') {
+      this.setState( { loading: true } )
+
+      // simulating the loading time
+      setTimeout(() => this.setState( { loading: false, page: 'MapUI' } ), 3000)
     }
   }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
@@ -14,6 +14,21 @@ import Typography from '@material-ui/core/Typography'
 import CloseIcon from '@material-ui/icons/Close'
 import Slide from '@material-ui/core/Slide'
 
+import ReactList from './ReactList.js'
+
+const demoDetails = {
+  contactNumber : '412 559 9354',
+  fullName : 'Nathan Khosla',
+  age: 28,
+  bloodType: '0-',
+  injury: 'Sprained Ankle',
+  priority: 'low',
+  rescueETA: '2d 11h 23min',
+  model: 'Tesla Model S, black',
+  licence : 'SUPH3R0',
+  seats: 4
+}
+
 const styles = {
   appBar: {
     position: 'relative',
@@ -27,23 +42,33 @@ function Transition(props) {
   return <Slide direction="up" {...props} />
 }
 
-class VictimFullScreen extends React.Component {
-  state = {
-    open: false,
-  }
+class Details extends Component {
 
-  handleClickOpen = () => {
-    this.setState({ open: true })
-  }
+	constructor(props) {
 
-  handleClose = () => {
-    this.setState({ open: false })
-  }
+		console.log('Details props:', props)
 
-  render() {
-    const { classes } = this.props
-    return (
-      <div>
+		super(props)
+		this.state = {
+			volunteer: props.details.volunteer,
+			details: demoDetails,
+			open: false
+		}
+	}
+
+	handleClickOpen = () => {
+  	this.setState({ open: true })
+	}
+
+	handleClose = () => {
+ 	 this.setState({ open: false })
+	}
+
+	render() {
+		const { classes } = this.props
+
+		return (
+		<div>
         <Button onClick={this.handleClickOpen}>My details</Button>
         <Dialog
           fullScreen
@@ -64,44 +89,16 @@ class VictimFullScreen extends React.Component {
               </Button>
             </Toolbar>
           </AppBar>
-          <List>
-            <Divider />
-            <ListItem button>
-              <ListItemText primary="Contact Number" secondary="412 559 9354" />
-            </ListItem>
-            <Divider />
-            <ListItem button>
-              <ListItemText primary="Full Name" secondary="Nathan Khosla" />
-            </ListItem>
-            <Divider />
-            <ListItem button>
-              <ListItemText primary="Age" secondary="28" />
-            </ListItem>
-            <Divider />
-            <ListItem button>
-              <ListItemText primary="Blood type" secondary="O-" />
-            </ListItem>
-            <Divider />
-            <ListItem button>
-              <ListItemText primary="Injuries" secondary="none" />
-            </ListItem>
-            <Divider />
-            <ListItem button>
-              <ListItemText primary="Sprained Ankle" secondary="low" />
-            </ListItem>
-            <Divider />
-            <ListItem button>
-              <ListItemText primary="Rescue ETA" secondary="2d 11h 23min" />
-            </ListItem>
-          </List>
+
+          <ReactList volunteer={this.state.volunteer} details={this.state.details}/>
         </Dialog>
       </div>
-    )
-  }
+     )
+	}
 }
 
-VictimFullScreen.propTypes = {
+Details.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(VictimFullScreen)
+export default withStyles(styles)(Details)
