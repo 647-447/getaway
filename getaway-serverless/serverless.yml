@@ -20,7 +20,6 @@ service: getaway-serverless # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs8.10
-
 # you can overwrite defaults here
 #  stage: dev
 region: eu-west-1
@@ -58,17 +57,31 @@ plugins:
   - serverless-offline
 
 functions:
-  alertNewVictim:
-    handler: handlers/alertNewVictim.handler
+  addVictim:
+    handler: handlers/addVictim.handler
+    events:
+      - http:
+          path: /victims/
+          method: PUT
+  getVictim:
+    handler: handlers/getVictim.handler
+    events:
+      - http:
+          path: /victims/{number}
+          method: GET
   ping:
     handler: handlers/ping.handler
+    events:
+      - http:
+          path: /ping
+          method: GET
   api:
+    handler: handlers/api.handler
     events:
       - http:
           path: /api
           method: GET
           cors: true
-    handler: handlers/api.handler
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
